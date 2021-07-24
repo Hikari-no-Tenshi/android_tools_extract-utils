@@ -474,7 +474,7 @@ function write_blueprint_packages() {
         fi
         if [ "$CLASS" = "APPS" ]; then
             printf '\tdex_preopt: {\n'
-            if [ "$DEXPREOPTAPPS" = "true" ]; then
+            if [ "$DEXPREOPTAPPS" = "true" ] && [[ ! "$PKGNAME" =~ "gpudrivers" ]] ; then
                 printf '\t\tenabled: true,\n'
             else
                 printf '\t\tenabled: false,\n'
