@@ -474,7 +474,11 @@ function write_blueprint_packages() {
         fi
         if [ "$CLASS" = "APPS" ]; then
             printf '\tdex_preopt: {\n'
-            printf '\t\tenabled: false,\n'
+            if [ "$DEXPREOPTAPPS" = "true" ]; then
+                printf '\t\tenabled: true,\n'
+            else
+                printf '\t\tenabled: false,\n'
+            fi
             printf '\t},\n'
         fi
         if [ "$CLASS" = "SHARED_LIBRARIES" ] || [ "$CLASS" = "EXECUTABLES" ] ; then
